@@ -50,3 +50,11 @@ def runSh(args, *, output=False, shell=False, cd=None):
                 .strip()
             )
         return subprocess.run(args, shell=True, cwd=cd).returncode
+    
+def installAutoSSH():
+    if checkAvailable("/usr/bin/autossh"):
+        return
+    else:
+        runSh("apt-get install autossh -qq -y")
+
+
